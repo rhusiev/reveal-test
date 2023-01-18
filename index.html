@@ -15,7 +15,8 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            <section>A Slide</section>
+            <section>Slide 1</section>
+            <section>Slide 2</section>
             <!-- Add a slide with subslides-->
             <section>
                 <section>Subslide 1</section>
@@ -25,6 +26,13 @@
             <section>
                 <section><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen data-preload=""></iframe></section>
                 <section><iframe width="560" height="315" src="https://www.youtube.com/embed/L_jWHffIx5E" allowfullscreen data-preload=""></iframe></section>
+            </section>
+            <section>
+                <pre><code data-line-numbers="1,2|3|4|1-4">let a = 1;
+let b = 2;
+let c = x =&gt; 1 + 2 + x;
+c(3);
+                </code></pre>
             </section>
         </div>
     </div>
@@ -38,9 +46,34 @@
         // - https://revealjs.com/config/
         Reveal.initialize({
             hash: true,
+            katex: {
+                version: 'latest',
+                delimiters: [{
+                        left: '$$',
+                        right: '$$',
+                        display: true
+                    },
+                    {
+                        left: '$',
+                        right: '$',
+                        display: false
+                    },
+                    {
+                        left: '\\(',
+                        right: '\\)',
+                        display: false
+                    },
+                    {
+                        left: '\\[',
+                        right: '\\]',
+                        display: true
+                    }
+                ],
+                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            },
 
             // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX],
         });
     </script>
 </body>
