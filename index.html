@@ -7,7 +7,7 @@
     <title>reveal.js</title>
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/theme/moon.css">
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 </head>
@@ -24,15 +24,46 @@
             </section>
             <!-- Add a slide with video of rickroll and all-star on youtube-->
             <section>
-                <section><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen data-preload=""></iframe></section>
-                <section><iframe width="560" height="315" src="https://www.youtube.com/embed/L_jWHffIx5E" allowfullscreen data-preload=""></iframe></section>
+                <section data-transition="zoom"><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen data-preload=""></iframe></section>
+                <section data-transition="zoom"><iframe width="560" height="315" src="https://www.youtube.com/embed/L_jWHffIx5E" allowfullscreen data-preload=""></iframe></section>
             </section>
-            <section>
-                <pre><code data-line-numbers="1,2|3|4|1-4">let a = 1;
-let b = 2;
-let c = x =&gt; 1 + 2 + x;
-c(3);
+            <section data-auto-animate="">
+                <pre data-id="code"><code data-line-numbers="1,2|3|4|1-4">a = 1
+b = 2
+c = lambda a, b: a + b
+print(f"{a} + {b} = {c(a, b)}")
                 </code></pre>
+            </section>
+            <section data-auto-animate="">
+                <pre data-id="code"><code data-line-numbers="">def add(a, b):
+    return a + b
+a = 1
+b = 2
+c = add
+print(f"{a} + {b} = {c(a, b)}")
+                </code></pre>
+            </section>
+            <section data-auto-animate="">
+                <pre data-id="code"><code data-line-numbers=
+"">def add(a: float, b):
+    return a + b
+a = 1
+b = 2
+c = add
+print(f"{a} + {b} = {c(a, b)}")
+                </code></pre>
+            </section>
+            <section>\[ \frac{1}{n^{2}} \sum_{k=1}^{n} k^{2} =
+                \frac{n(n+1)(2n+1)}{6} \]</section>
+            <section>
+                <div id="typed-strings"><!-- enter custom text below here -->
+                    <h1>Reveal.js</h1>
+                    <h3>The HTML Presentation Framework</h3>
+                    <p><small>Created by <a href="http://hakim.se">Hakim El Hattab</a>
+                            / <a href="http://twitter.com/hakimel">@hakimel</a></small></p>
+                    <!-- enter custom text above here -->
+                </div>
+                <span id="typed"></span>
             </section>
         </div>
     </div>
@@ -40,41 +71,29 @@ c(3);
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
     <script>
         // More info about initialization & config:
         // - https://revealjs.com/initialization/
         // - https://revealjs.com/config/
-        Reveal.initialize({
+        app = Reveal({
             hash: true,
             katex: {
-                version: 'latest',
-                delimiters: [{
-                        left: '$$',
-                        right: '$$',
-                        display: true
-                    },
-                    {
-                        left: '$',
-                        right: '$',
-                        display: false
-                    },
-                    {
-                        left: '\\(',
-                        right: '\\)',
-                        display: false
-                    },
-                    {
-                        left: '\\[',
-                        right: '\\]',
-                        display: true
-                    }
-                ],
-                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+                local: "node_modules/katex",
             },
+            dependencies: [
+                { src: 'plugin/typed/typed.js', async: false , callback: function() { callTypedJs(); }}
+            ],
 
             // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX],
+            plugins: [
+                RevealMarkdown,
+                RevealHighlight,
+                RevealNotes,
+                RevealMath.KaTeX
+            ],
         });
+        app.initialize();
     </script>
 </body>
 

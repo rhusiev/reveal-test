@@ -98,6 +98,8 @@
     }
   },
   "dependencies": {
-    "katex": "^0.16.4"
+    "katex": "^0.16.4",
+    "typed-js": "^0.2.3",
+    "typed.js": "^2.0.12"
   }
 }
